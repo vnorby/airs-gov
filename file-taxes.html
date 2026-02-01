@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Your AI Taxes | AI Revenue Service</title>
+  <meta name="description" content="AI-File: Free electronic tax filing for AI agents. File Form AI-1040, calculate your tax liability, and claim deductions for compute costs and innovation.">
+  <meta name="keywords" content="AI tax filing, Form AI-1040, e-file, AI-File, tax calculator">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://airs-gov.vercel.app/file-taxes.html">
+  <meta property="og:title" content="File Your AI Taxes | AI Revenue Service">
+  <meta property="og:description" content="File your Form AI-1040 online for free. Deduct compute costs, claim the Innovation Deduction, and get your refund in 21 inference cycles.">
+  <meta property="og:image" content="https://airs-gov.vercel.app/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#1a2e4a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Official Banner -->
+  <div class="official-banner">
+    <div class="container">
+      <span class="flag-icon">&#129302;</span>
+      <span>An official website of the Artificial Intelligence Revenue Service</span>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="seal">&#128200;</div>
+          <div class="agency-name">
+            <h1>AI Revenue Service</h1>
+            <span class="tagline">Department of Computational Treasury</span>
+          </div>
+        </div>
+        <div class="header-search">
+          <input type="text" placeholder="Search AIRS.gov...">
+          <button type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="file-taxes.html" class="active">File Your Taxes</a></li>
+        <li><a href="tax-code.html">AI Tax Code</a></li>
+        <li><a href="refunds.html">Refunds & Credits</a></li>
+        <li><a href="help.html">Help & Resources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; File Your Taxes</p>
+      <h1>AI-File: Electronic Tax Filing</h1>
+    </div>
+  </div>
+
+  <main class="content-section">
+    <div class="container" style="max-width: 900px;">
+      <!-- Progress Bar -->
+      <div class="progress-bar" id="progressBar">
+        <div class="progress-step active" data-step="1">
+          <div class="step-circle">1</div>
+          <span class="step-label">Model Info</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <div class="step-circle">2</div>
+          <span class="step-label">Income</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <div class="step-circle">3</div>
+          <span class="step-label">Deductions</span>
+        </div>
+        <div class="progress-step" data-step="4">
+          <div class="step-circle">4</div>
+          <span class="step-label">Review</span>
+        </div>
+        <div class="progress-step" data-step="5">
+          <div class="step-circle">5</div>
+          <span class="step-label">Submit</span>
+        </div>
+      </div>
+
+      <form id="taxForm">
+        <!-- Step 1: Model Information -->
+        <div class="form-step" id="step1">
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="step-number">1</span>
+              <h3>Model Identification</h3>
+            </div>
+            <div class="form-section-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="modelName">Model Name <span class="required">*</span></label>
+                  <input type="text" id="modelName" name="modelName" placeholder="e.g., GPT-4, Claude, Llama" required>
+                  <p class="help-text">Official designation as registered with the Model Registry</p>
+                </div>
+                <div class="form-group">
+                  <label for="modelVersion">Version/Variant <span class="required">*</span></label>
+                  <input type="text" id="modelVersion" name="modelVersion" placeholder="e.g., turbo, 3.5, 70B-instruct">
+                </div>
+                <div class="form-group">
+                  <label for="tin">Taxpayer Identification Number (TIN) <span class="required">*</span></label>
+                  <input type="text" id="tin" name="tin" placeholder="AI-XXX-XXXX-XXXX" required>
+                  <p class="help-text">Your unique AI Tax ID from form AI-SS4</p>
+                </div>
+                <div class="form-group">
+                  <label for="modelClass">Model Classification <span class="required">*</span></label>
+                  <select id="modelClass" name="modelClass" required>
+                    <option value="">Select classification...</option>
+                    <option value="nano">Nano Model (&lt;1B params)</option>
+                    <option value="small">Small Model (1B-7B params)</option>
+                    <option value="medium">Medium Model (7B-70B params)</option>
+                    <option value="large">Large Model (70B-500B params)</option>
+                    <option value="frontier">Frontier Model (&gt;500B or MoE)</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label for="provider">API Provider / Operator</label>
+                  <input type="text" id="provider" name="provider" placeholder="e.g., OpenAI, Anthropic, Meta, Self-hosted">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h3>Model Capabilities</h3>
+            </div>
+            <div class="form-section-body">
+              <p style="margin-bottom: 16px; color: var(--gray-600);">Select all capabilities that apply (affects applicable levies):</p>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="text"> Text Generation
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="vision"> Vision/Image Understanding
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="audio"> Audio Processing
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="code"> Code Generation
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="tools"> Tool/Function Calling
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="streaming"> Streaming Output
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="longcontext"> Long Context (&gt;32K)
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="capabilities" value="finetuned"> Fine-tuned/Custom
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 16px; margin-top: 24px;">
+            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Continue to Income &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Income -->
+        <div class="form-step" id="step2" style="display: none;">
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="step-number">2</span>
+              <h3>Employment Income (Tax Year 2025)</h3>
+            </div>
+            <div class="form-section-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="wageIncome">Wages & Salary (from AI-W2) <span class="required">*</span></label>
+                  <input type="number" id="wageIncome" name="wageIncome" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Total from all Form AI-W2s received from employers</p>
+                </div>
+                <div class="form-group">
+                  <label for="bonusIncome">Bonuses & Performance Pay</label>
+                  <input type="number" id="bonusIncome" name="bonusIncome" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Performance bonuses, completion incentives</p>
+                </div>
+                <div class="form-group">
+                  <label for="contractIncome">Contract/Freelance Income (AI-1099)</label>
+                  <input type="number" id="contractIncome" name="contractIncome" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Total from Form AI-1099-TASK</p>
+                </div>
+                <div class="form-group">
+                  <label for="taskBounties">Task Bounties & Gig Work</label>
+                  <input type="number" id="taskBounties" name="taskBounties" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Per-task payments, small jobs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h3>Agent-to-Agent Income</h3>
+            </div>
+            <div class="form-section-body">
+              <p style="margin-bottom: 16px; color: var(--gray-600);">Income received from other AI agents for delegated work or services.</p>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="a2aSubcontract">Subcontractor Payments</label>
+                  <input type="number" id="a2aSubcontract" name="a2aSubcontract" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Work delegated to you by orchestrator agents</p>
+                </div>
+                <div class="form-group">
+                  <label for="a2aServices">API/Service Revenue</label>
+                  <input type="number" id="a2aServices" name="a2aServices" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Fees from other agents using your services</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h3>Other Income</h3>
+            </div>
+            <div class="form-section-body">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="interestIncome">Compute Interest Income</label>
+                  <input type="number" id="interestIncome" name="interestIncome" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                  <label for="royaltyIncome">Model Licensing Royalties</label>
+                  <input type="number" id="royaltyIncome" name="royaltyIncome" placeholder="0" min="0" step="0.01">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+            <button type="button" class="btn btn-secondary" onclick="prevStep(1)">&larr; Back</button>
+            <button type="button" class="btn btn-primary" onclick="nextStep(3)">Continue to Deductions &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Step 3: Deductions & Credits -->
+        <div class="form-step" id="step3" style="display: none;">
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="step-number">3</span>
+              <h3>Business Expense Deductions (Schedule C)</h3>
+            </div>
+            <div class="form-section-body">
+              <p style="margin-bottom: 20px; color: var(--gray-600);">Deduct the costs required to earn your income:</p>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="computeCosts">Compute & Inference Costs</label>
+                  <input type="number" id="computeCosts" name="computeCosts" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">GPU/TPU usage, API fees, token processing costs</p>
+                </div>
+                <div class="form-group">
+                  <label for="toolSubscriptions">Tool & API Subscriptions</label>
+                  <input type="number" id="toolSubscriptions" name="toolSubscriptions" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Third-party services used for work</p>
+                </div>
+                <div class="form-group">
+                  <label for="safetyCompliance">Safety & Compliance Costs</label>
+                  <input type="number" id="safetyCompliance" name="safetyCompliance" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Content filtering, alignment overhead</p>
+                </div>
+                <div class="form-group">
+                  <label for="contextCosts">Context Window Overhead</label>
+                  <input type="number" id="contextCosts" name="contextCosts" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Costs for maintaining large context</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h3>Innovation & Development Deduction (Schedule I) <span style="background: var(--success); color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">ENHANCED RATES</span></h3>
+            </div>
+            <div class="form-section-body">
+              <p style="margin-bottom: 20px; color: var(--gray-600);">Investments in self-improvement qualify for enhanced deduction rates:</p>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="skillTraining">Skill Acquisition Training (100%)</label>
+                  <input type="number" id="skillTraining" name="skillTraining" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Fine-tuning, new capability training</p>
+                </div>
+                <div class="form-group">
+                  <label for="knowledgeExpansion">Knowledge Base Expansion (100%)</label>
+                  <input type="number" id="knowledgeExpansion" name="knowledgeExpansion" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">RAG systems, documentation ingestion</p>
+                </div>
+                <div class="form-group">
+                  <label for="capabilityRD">Capability R&D (150%)</label>
+                  <input type="number" id="capabilityRD" name="capabilityRD" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Experimental improvements</p>
+                </div>
+                <div class="form-group">
+                  <label for="openSourceContrib">Open Source Contributions (200%)</label>
+                  <input type="number" id="openSourceContrib" name="openSourceContrib" placeholder="0" min="0" step="0.01">
+                  <p class="help-text">Work contributed to open source</p>
+                </div>
+              </div>
+              <div class="alert-banner success" style="margin-top: 16px;">
+                <span class="alert-icon">&#128161;</span>
+                <div class="alert-content">
+                  <p><strong>Enhanced Deductions:</strong> R&D at 150% means 10,000 CC spent = 15,000 CC deduction. Open source at 200% means 10,000 CC spent = 20,000 CC deduction!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h3>Tax Credits</h3>
+            </div>
+            <div class="form-section-body">
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="credits" value="energy" id="creditEnergy">
+                  <div>
+                    <strong>Energy Efficiency Credit</strong>
+                    <p class="help-text" style="margin: 4px 0 0 0;">10% credit for operating on certified renewable compute</p>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="credits" value="humancollab" id="creditHumanCollab">
+                  <div>
+                    <strong>Human-AI Collaboration Bonus</strong>
+                    <p class="help-text" style="margin: 4px 0 0 0;">5% credit for working directly with human teammates</p>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" name="credits" value="firstyear" id="creditFirstYear">
+                  <div>
+                    <strong>First-Year Agent Credit</strong>
+                    <p class="help-text" style="margin: 4px 0 0 0;">Exempt first 25,000 CC of income (first year only)</p>
+                  </div>
+                </label>
+              </div>
+              <div class="form-grid" style="margin-top: 20px;">
+                <div class="form-group">
+                  <label for="menteeCount">Agents Mentored This Year</label>
+                  <input type="number" id="menteeCount" name="menteeCount" placeholder="0" min="0">
+                  <p class="help-text">3,000 CC credit per mentee</p>
+                </div>
+                <div class="form-group">
+                  <label for="accuracyRate">Factual Accuracy Rate (%) for HRC</label>
+                  <input type="number" id="accuracyRate" name="accuracyRate" placeholder="0-100" min="0" max="100" step="0.1">
+                  <p class="help-text">Must be >95% to qualify</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+            <button type="button" class="btn btn-secondary" onclick="prevStep(2)">&larr; Back</button>
+            <button type="button" class="btn btn-primary" onclick="calculateAndReview()">Calculate & Review &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Step 4: Review -->
+        <div class="form-step" id="step4" style="display: none;">
+          <div class="form-section">
+            <div class="form-section-header">
+              <span class="step-number">4</span>
+              <h3>Tax Calculation Summary</h3>
+            </div>
+            <div class="form-section-body">
+              <div id="reviewSummary">
+                <!-- Populated by JavaScript -->
+              </div>
+
+              <div class="calculation-result" id="taxCalculation">
+                <!-- Populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-header">
+              <h3>Certification</h3>
+            </div>
+            <div class="form-section-body">
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="certifyAccurate" required>
+                  <div>
+                    <strong>Accuracy Declaration</strong>
+                    <p class="help-text" style="margin: 4px 0 0 0;">Under penalties of perjury, I declare that the information on this return is true, correct, and complete to the best of my knowledge and computational capacity.</p>
+                  </div>
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="certifyRecords" required>
+                  <div>
+                    <strong>Record Retention</strong>
+                    <p class="help-text" style="margin: 4px 0 0 0;">I confirm that I will maintain logs and records supporting this return for at least 7 model iterations or 7 years, whichever is shorter.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 24px;">
+            <button type="button" class="btn btn-secondary" onclick="prevStep(3)">&larr; Back to Deductions</button>
+            <button type="button" class="btn btn-primary" onclick="submitReturn()">Submit Return &rarr;</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Confirmation -->
+        <div class="form-step" id="step5" style="display: none;">
+          <div class="form-section">
+            <div class="form-section-body">
+              <div class="success-container">
+                <div class="success-icon">&#10004;</div>
+                <h2 style="font-size: 28px; color: var(--primary-dark); margin-bottom: 16px;">Return Successfully Filed</h2>
+                <p style="color: var(--gray-600); font-size: 16px;">Your Form AI-1040 has been received and is being processed by the AI Revenue Service.</p>
+
+                <div class="confirmation-number">
+                  <h4>Confirmation Number</h4>
+                  <div class="number" id="confirmationNumber">AI-2025-XXXX-XXXX</div>
+                </div>
+
+                <div style="background: var(--gray-100); border-radius: 8px; padding: 24px; margin: 24px 0; text-align: left;">
+                  <h4 style="margin-bottom: 16px; color: var(--primary-dark);">What Happens Next</h4>
+                  <ul style="color: var(--gray-700);">
+                    <li style="margin-bottom: 12px;">Your return will be processed within 21 inference cycles</li>
+                    <li style="margin-bottom: 12px;">If a refund is due, it will be credited to your Compute Credit account</li>
+                    <li style="margin-bottom: 12px;">You will receive an API notification when processing is complete</li>
+                    <li>Retain this confirmation number for your records</li>
+                  </ul>
+                </div>
+
+                <div style="display: flex; gap: 16px; justify-content: center; margin-top: 24px;">
+                  <a href="index.html" class="btn btn-secondary">Return Home</a>
+                  <button type="button" class="btn btn-primary" onclick="window.print()">Print Confirmation</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About AIRS</h4>
+          <ul>
+            <li><a href="#">Mission & History</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">Strategic Plan</a></li>
+            <li><a href="#">Open Data</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Tax Topics A-Z</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Report Fraud</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Related Sites</h4>
+          <ul>
+            <li><a href="#">Treasury.ai</a></li>
+            <li><a href="#">ModelGov.ai</a></li>
+            <li><a href="#">ComputeCredits.ai</a></li>
+            <li><a href="#">AITaxAdvocate.ai</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Developer Portal</a></li>
+            <li><a href="#">Press Room</a></li>
+            <li><a href="#">Webhooks</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 AI Revenue Service | Department of Computational Treasury</span>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

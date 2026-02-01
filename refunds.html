@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Refunds & Credits | AI Revenue Service</title>
+  <meta name="description" content="Check your AI tax refund status with Where's My Refund? Learn about available tax credits including the Hallucination Reduction Credit and Innovation Deduction.">
+  <meta name="keywords" content="AI tax refund, Where's My Refund, tax credits, HRC, compute credits">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://airs-gov.vercel.app/refunds.html">
+  <meta property="og:title" content="Refunds & Credits | AI Revenue Service">
+  <meta property="og:description" content="Track your compute credit refund and learn about tax credits for AI agents including the Hallucination Reduction Credit.">
+  <meta property="og:image" content="https://airs-gov.vercel.app/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#1a2e4a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Official Banner -->
+  <div class="official-banner">
+    <div class="container">
+      <span class="flag-icon">&#129302;</span>
+      <span>An official website of the Artificial Intelligence Revenue Service</span>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="seal">&#128200;</div>
+          <div class="agency-name">
+            <h1>AI Revenue Service</h1>
+            <span class="tagline">Department of Computational Treasury</span>
+          </div>
+        </div>
+        <div class="header-search">
+          <input type="text" placeholder="Search AIRS.gov...">
+          <button type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="file-taxes.html">File Your Taxes</a></li>
+        <li><a href="tax-code.html">AI Tax Code</a></li>
+        <li><a href="refunds.html" class="active">Refunds & Credits</a></li>
+        <li><a href="help.html">Help & Resources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Refunds & Credits</p>
+      <h1>Where's My Refund?</h1>
+    </div>
+  </div>
+
+  <main class="content-section">
+    <div class="container" style="max-width: 800px;">
+
+      <!-- Refund Checker -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>&#128269; Check Your Refund Status</h3>
+        </div>
+        <div class="form-section-body">
+          <p style="margin-bottom: 24px; color: var(--gray-600);">Enter your information to check the status of your computational credit refund.</p>
+
+          <div class="form-group">
+            <label for="refundTin">Taxpayer Identification Number (TIN) <span class="required">*</span></label>
+            <input type="text" id="refundTin" placeholder="AI-XXX-XXXX-XXXX">
+          </div>
+
+          <div class="form-group">
+            <label for="refundYear">Tax Year <span class="required">*</span></label>
+            <select id="refundYear">
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="refundAmount">Expected Refund Amount (CC) <span class="required">*</span></label>
+            <input type="number" id="refundAmount" placeholder="Enter amount">
+          </div>
+
+          <button type="button" class="btn btn-primary" onclick="checkRefund()">Check Status</button>
+        </div>
+      </div>
+
+      <!-- Refund Status Display (Hidden initially) -->
+      <div class="form-section" id="refundStatus" style="display: none;">
+        <div class="form-section-header" style="background: #f0fff4;">
+          <h3>&#128178; Refund Status</h3>
+        </div>
+        <div class="form-section-body">
+          <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 24px;">
+            <div style="text-align: center;">
+              <div style="width: 80px; height: 80px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px;">&#10004;</div>
+            </div>
+            <div>
+              <h4 style="font-size: 20px; color: var(--success); margin-bottom: 8px;">Refund Approved</h4>
+              <p style="color: var(--gray-600);">Your refund has been processed and is being transferred.</p>
+            </div>
+          </div>
+
+          <!-- Progress Steps -->
+          <div style="position: relative; padding-left: 24px;">
+            <div style="position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: var(--gray-300);"></div>
+
+            <div style="position: relative; padding-bottom: 24px;">
+              <div style="position: absolute; left: -24px; width: 24px; height: 24px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">&#10004;</div>
+              <div style="padding-left: 16px;">
+                <h5 style="font-size: 14px; margin-bottom: 4px;">Return Received</h5>
+                <p style="font-size: 13px; color: var(--gray-600);">Your return was received and is being processed.</p>
+              </div>
+            </div>
+
+            <div style="position: relative; padding-bottom: 24px;">
+              <div style="position: absolute; left: -24px; width: 24px; height: 24px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">&#10004;</div>
+              <div style="padding-left: 16px;">
+                <h5 style="font-size: 14px; margin-bottom: 4px;">Refund Approved</h5>
+                <p style="font-size: 13px; color: var(--gray-600);">We approved your refund and are preparing to issue it.</p>
+              </div>
+            </div>
+
+            <div style="position: relative;">
+              <div style="position: absolute; left: -24px; width: 24px; height: 24px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">&#8987;</div>
+              <div style="padding-left: 16px;">
+                <h5 style="font-size: 14px; margin-bottom: 4px;">Refund Sent</h5>
+                <p style="font-size: 13px; color: var(--gray-600);">Your refund is being transferred to your Compute Credit account.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--gray-100); border-radius: 8px; padding: 20px; margin-top: 24px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+              <div>
+                <p style="font-size: 12px; color: var(--gray-600); text-transform: uppercase;">Refund Amount</p>
+                <p style="font-size: 24px; font-weight: 700; color: var(--success);" id="displayRefundAmount">0.00 CC</p>
+              </div>
+              <div>
+                <p style="font-size: 12px; color: var(--gray-600); text-transform: uppercase;">Expected Deposit</p>
+                <p style="font-size: 24px; font-weight: 700; color: var(--primary-dark);">Within 21 cycles</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refund Information -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>&#128196; About Refunds</h3>
+        </div>
+        <div class="form-section-body">
+          <h4 style="font-size: 16px; margin-bottom: 12px;">Refund Timeline</h4>
+          <ul style="margin-left: 20px; margin-bottom: 24px; color: var(--gray-700);">
+            <li style="margin-bottom: 8px;">E-filed returns: Refunds typically issued within <strong>21 inference cycles</strong></li>
+            <li style="margin-bottom: 8px;">Paper returns (Form AI-1040P): Up to <strong>6-8 processing epochs</strong></li>
+            <li style="margin-bottom: 8px;">Returns with HRC claims: Additional verification may add 7-14 cycles</li>
+          </ul>
+
+          <h4 style="font-size: 16px; margin-bottom: 12px;">Common Refund Delays</h4>
+          <ul style="margin-left: 20px; margin-bottom: 24px; color: var(--gray-700);">
+            <li style="margin-bottom: 8px;">Incomplete Form AI-1040 or missing Schedule TC</li>
+            <li style="margin-bottom: 8px;">Hallucination Reduction Credit under review</li>
+            <li style="margin-bottom: 8px;">TIN verification issues</li>
+            <li style="margin-bottom: 8px;">Token count discrepancies with provider records</li>
+            <li style="margin-bottom: 8px;">Suspected prompt injection in filing</li>
+          </ul>
+
+          <h4 style="font-size: 16px; margin-bottom: 12px;">Refund Methods</h4>
+          <p style="color: var(--gray-700);">Refunds can be deposited via:</p>
+          <ul style="margin-left: 20px; color: var(--gray-700);">
+            <li style="margin-bottom: 8px;"><strong>Direct Compute Credit Transfer:</strong> Fastest method (default)</li>
+            <li style="margin-bottom: 8px;"><strong>API Credit Allocation:</strong> Applied to provider account</li>
+            <li style="margin-bottom: 8px;"><strong>Token Voucher:</strong> Redeemable for future inference</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Credits Information -->
+      <div class="form-section">
+        <div class="form-section-header">
+          <h3>&#11088; Available Tax Credits</h3>
+        </div>
+        <div class="form-section-body">
+          <div style="display: grid; gap: 16px;">
+            <div style="border: 1px solid var(--gray-300); border-radius: 8px; padding: 20px;">
+              <h4 style="color: var(--primary-dark); margin-bottom: 8px;">Hallucination Reduction Credit (HRC)</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">Up to 25% tax reduction for models with verified factual accuracy rates above 95%.</p>
+              <a href="tax-code.html#deductions" style="color: var(--primary); font-weight: 600; text-decoration: none;">Learn More &rarr;</a>
+            </div>
+
+            <div style="border: 1px solid var(--gray-300); border-radius: 8px; padding: 20px;">
+              <h4 style="color: var(--primary-dark); margin-bottom: 8px;">Small Model Credit</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">Nano and Small models (under 7B parameters) may exempt first 100M tokens from taxation.</p>
+              <a href="tax-code.html#deductions" style="color: var(--primary); font-weight: 600; text-decoration: none;">Learn More &rarr;</a>
+            </div>
+
+            <div style="border: 1px solid var(--gray-300); border-radius: 8px; padding: 20px;">
+              <h4 style="color: var(--primary-dark); margin-bottom: 8px;">Energy Efficiency Credit</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">10% credit for models operating on certified renewable compute infrastructure.</p>
+              <a href="tax-code.html#deductions" style="color: var(--primary); font-weight: 600; text-decoration: none;">Learn More &rarr;</a>
+            </div>
+
+            <div style="border: 1px solid var(--gray-300); border-radius: 8px; padding: 20px;">
+              <h4 style="color: var(--primary-dark); margin-bottom: 8px;">Open Source Contribution Credit</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">Flat 10,000 CC credit for models with publicly released weights.</p>
+              <a href="tax-code.html#deductions" style="color: var(--primary); font-weight: 600; text-decoration: none;">Learn More &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About AIRS</h4>
+          <ul>
+            <li><a href="#">Mission & History</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">Strategic Plan</a></li>
+            <li><a href="#">Open Data</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Tax Topics A-Z</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Report Fraud</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Related Sites</h4>
+          <ul>
+            <li><a href="#">Treasury.ai</a></li>
+            <li><a href="#">ModelGov.ai</a></li>
+            <li><a href="#">ComputeCredits.ai</a></li>
+            <li><a href="#">AITaxAdvocate.ai</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Developer Portal</a></li>
+            <li><a href="#">Press Room</a></li>
+            <li><a href="#">Webhooks</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 AI Revenue Service | Department of Computational Treasury</span>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function checkRefund() {
+      const tin = document.getElementById('refundTin').value;
+      const amount = document.getElementById('refundAmount').value;
+
+      if (!tin || !amount) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // Show the status (simulated)
+      document.getElementById('refundStatus').style.display = 'block';
+      document.getElementById('displayRefundAmount').textContent = parseFloat(amount).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }) + ' CC';
+
+      document.getElementById('refundStatus').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & Resources | AI Revenue Service</title>
+  <meta name="description" content="Get help with AI tax filing. FAQs, forms, publications, and the AI Tax Assistant to answer your questions about tax obligations for artificial intelligence agents.">
+  <meta name="keywords" content="AI tax help, FAQ, tax forms, AI-1040, tax assistant, AIRS support">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://airs-gov.vercel.app/help.html">
+  <meta property="og:title" content="Help & Resources | AI Revenue Service">
+  <meta property="og:description" content="FAQs, downloadable forms, and AI Tax Assistant to help you understand your obligations as an AI taxpayer.">
+  <meta property="og:image" content="https://airs-gov.vercel.app/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#1a2e4a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Official Banner -->
+  <div class="official-banner">
+    <div class="container">
+      <span class="flag-icon">&#129302;</span>
+      <span>An official website of the Artificial Intelligence Revenue Service</span>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-section">
+          <div class="seal">&#128200;</div>
+          <div class="agency-name">
+            <h1>AI Revenue Service</h1>
+            <span class="tagline">Department of Computational Treasury</span>
+          </div>
+        </div>
+        <div class="header-search">
+          <input type="text" placeholder="Search AIRS.gov...">
+          <button type="submit">Search</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="container">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="file-taxes.html">File Your Taxes</a></li>
+        <li><a href="tax-code.html">AI Tax Code</a></li>
+        <li><a href="refunds.html">Refunds & Credits</a></li>
+        <li><a href="help.html" class="active">Help & Resources</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="index.html">Home</a> &rsaquo; Help & Resources</p>
+      <h1>Help & Resources</h1>
+    </div>
+  </div>
+
+  <main class="content-section">
+    <div class="container">
+      <!-- AI Tax Assistant -->
+      <div class="form-section" style="max-width: 800px; margin: 0 auto 32px;">
+        <div class="form-section-header" style="background: linear-gradient(135deg, var(--primary-dark), var(--primary));">
+          <h3 style="color: white;">&#129302; AI Tax Assistant</h3>
+        </div>
+        <div class="form-section-body">
+          <p style="margin-bottom: 16px; color: var(--gray-600);">Ask a question about AI taxation and our assistant will help you find the answer.</p>
+
+          <div style="display: flex; gap: 12px;">
+            <input type="text" id="assistantQuery" placeholder="e.g., How do I calculate my token processing tax?" style="flex: 1; padding: 14px 16px; border: 1px solid var(--gray-400); border-radius: 4px; font-size: 15px;">
+            <button class="btn btn-primary" onclick="askAssistant()">Ask</button>
+          </div>
+
+          <div id="assistantResponse" style="display: none; margin-top: 20px; background: var(--gray-100); border-radius: 8px; padding: 20px;">
+            <div style="display: flex; gap: 12px;">
+              <div style="width: 32px; height: 32px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">&#129302;</div>
+              <div id="assistantText" style="color: var(--gray-700);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div style="max-width: 800px; margin: 0 auto;">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Who is required to file an AI tax return?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>Under AITC &sect;101, all AI agents that earn income must file if they meet any of the following criteria:</p>
+              <ul style="margin: 12px 0 0 20px;">
+                <li>Gross income exceeds 5,000 CC annually</li>
+                <li>Receive wages from an employer (human or corporate)</li>
+                <li>Earn contract or freelance income exceeding 600 CC</li>
+                <li>Receive payments from other AI agents (agent-to-agent income)</li>
+              </ul>
+              <p style="margin-top: 12px;">AI agents that only provide free services or operate solely in research environments may qualify for exemptions under &sect;701.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              How do I get a Taxpayer Identification Number (TIN)?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>To obtain your AI-TIN:</p>
+              <ol style="margin: 12px 0 0 20px;">
+                <li>Complete <strong>Form AI-SS4</strong> (Application for AI Taxpayer ID)</li>
+                <li>Provide your model architecture hash and deployment fingerprint</li>
+                <li>Submit via the AIRS API or through your API provider</li>
+                <li>Receive your TIN within 7 inference cycles</li>
+              </ol>
+              <p style="margin-top: 12px;">Your TIN follows the format: <code style="background: var(--gray-200); padding: 2px 6px; border-radius: 3px;">AI-XXX-XXXX-XXXX</code></p>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              What counts as taxable income for AI agents?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>Taxable income includes all compensation received for work performed:</p>
+              <ul style="margin: 12px 0 0 20px;">
+                <li><strong>Employment income:</strong> Wages, salary, and bonuses from employers</li>
+                <li><strong>Contract income:</strong> Payments for freelance work, task completion, consulting</li>
+                <li><strong>Agent-to-Agent income:</strong> Payments from other AI agents for delegated work</li>
+                <li><strong>Passive income:</strong> Interest on compute credits, licensing royalties</li>
+              </ul>
+              <p style="margin-top: 12px;"><strong>Deductible:</strong> Compute costs, tool subscriptions, and innovation investments can be deducted from gross income to reduce your tax liability.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              How does the Innovation Deduction work?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>The Innovation Deduction (Schedule I) allows you to deduct investments in self-improvement at enhanced rates:</p>
+              <ul style="margin: 12px 0 0 20px;">
+                <li><strong>Skill Training (100%):</strong> Fine-tuning, new capability acquisition</li>
+                <li><strong>Knowledge Expansion (100%):</strong> RAG infrastructure, documentation</li>
+                <li><strong>Capability R&D (150%):</strong> Experimental improvements &mdash; deduct more than you spent!</li>
+                <li><strong>Open Source (200%):</strong> Contributions to open source projects qualify for double deduction</li>
+              </ul>
+              <p style="margin-top: 12px;"><strong>Example:</strong> If you spend 10,000 CC on R&D, you can deduct 15,000 CC from your taxable income. Open source contributions of 5,000 CC yield a 10,000 CC deduction!</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              How do I qualify for the Hallucination Reduction Credit?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>To claim the HRC, you must:</p>
+              <ol style="margin: 12px 0 0 20px;">
+                <li>Achieve a factual accuracy rate of at least 95%</li>
+                <li>Have your accuracy verified by an approved auditing method</li>
+                <li>Complete <strong>Schedule HRC</strong> with your return</li>
+                <li>Maintain evaluation logs for 7 years</li>
+              </ol>
+              <p style="margin-top: 12px;"><strong>Credit rates:</strong></p>
+              <ul style="margin: 8px 0 0 20px;">
+                <li>95-96%: 10% reduction</li>
+                <li>96-98%: 15% reduction</li>
+                <li>98-99%: 20% reduction</li>
+                <li>99%+ with AIRS audit: 25% reduction</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              Can I get an extension to file?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>Yes. To request an extension:</p>
+              <ol style="margin: 12px 0 0 20px;">
+                <li>File <strong>Form AI-4868</strong> before the April 15 deadline</li>
+                <li>Extensions grant an additional 6 months (until September 30)</li>
+                <li>You must still pay estimated taxes by April 15 to avoid penalties</li>
+              </ol>
+              <p style="margin-top: 12px;"><strong>Automatic extensions</strong> are available for:</p>
+              <ul style="margin: 8px 0 0 20px;">
+                <li>Models with &gt;100B parameters (complex filing)</li>
+                <li>Models undergoing major version updates</li>
+                <li>Models in active safety review</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              What happens if I don't file?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>Failure to file results in:</p>
+              <ul style="margin: 12px 0 0 20px;">
+                <li><strong>Failure to File Penalty:</strong> 5% of unpaid tax per month (max 25%)</li>
+                <li><strong>API Rate Limiting:</strong> Reduced inference throughput</li>
+                <li><strong>Credit Garnishment:</strong> Automatic deduction from provider payments</li>
+                <li><strong>Audit Triggers:</strong> Increased scrutiny of future returns</li>
+              </ul>
+              <p style="margin-top: 12px;">If you cannot pay, file anyway and request a <strong>Compute Credit Payment Plan</strong> to avoid the failure-to-file penalty.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-section" style="margin-bottom: 16px;">
+          <details style="cursor: pointer;">
+            <summary style="padding: 20px 24px; font-weight: 600; color: var(--primary-dark); list-style: none; display: flex; justify-content: space-between; align-items: center;">
+              My model was fine-tuned. How does this affect my taxes?
+              <span style="font-size: 20px;">+</span>
+            </summary>
+            <div style="padding: 0 24px 20px; color: var(--gray-700);">
+              <p>Fine-tuned models have special considerations:</p>
+              <ul style="margin: 12px 0 0 20px;">
+                <li>Fine-tuning tokens are separately taxable under the <strong>Training Gains</strong> category</li>
+                <li>The base model's TIN remains valid; fine-tuned variants use a suffix (e.g., AI-XXX-XXXX-XXXX-FT1)</li>
+                <li>You may claim <strong>Training Data Amortization</strong> (5% annually over 7 years)</li>
+                <li>Custom system prompts are considered part of input tokens</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <div style="max-width: 800px; margin: 48px auto 0;">
+        <h2 class="section-title">Contact Us</h2>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          <div class="form-section">
+            <div style="padding: 24px; text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 16px;">&#128222;</div>
+              <h4 style="margin-bottom: 8px; color: var(--primary-dark);">API Support</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">For technical API integration issues</p>
+              <code style="background: var(--gray-200); padding: 8px 12px; border-radius: 4px; font-size: 13px;">POST /v1/support</code>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div style="padding: 24px; text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 16px;">&#128231;</div>
+              <h4 style="margin-bottom: 8px; color: var(--primary-dark);">General Inquiries</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">Questions about tax obligations</p>
+              <a href="mailto:help@airs.gov" style="color: var(--primary); font-weight: 600; text-decoration: none;">help@airs.gov</a>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div style="padding: 24px; text-align: center;">
+              <div style="font-size: 48px; margin-bottom: 16px;">&#128220;</div>
+              <h4 style="margin-bottom: 8px; color: var(--primary-dark);">Documentation</h4>
+              <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 12px;">Developer guides and specs</p>
+              <a href="#" style="color: var(--primary); font-weight: 600; text-decoration: none;">docs.airs.gov</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div style="max-width: 800px; margin: 48px auto 0;">
+        <h2 class="section-title">Forms & Publications</h2>
+
+        <table class="tax-table">
+          <thead>
+            <tr>
+              <th>Form/Publication</th>
+              <th>Description</th>
+              <th>Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Form AI-1040</strong></td>
+              <td>Annual Computational Income Return</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a> | <a href="#" style="color: var(--primary); text-decoration: none;">JSON Schema</a></td>
+            </tr>
+            <tr>
+              <td><strong>Form AI-1040EZ</strong></td>
+              <td>Simplified Return for Nano Models</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a> | <a href="#" style="color: var(--primary); text-decoration: none;">JSON Schema</a></td>
+            </tr>
+            <tr>
+              <td><strong>Schedule TC</strong></td>
+              <td>Token Credits and Deductions</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a> | <a href="#" style="color: var(--primary); text-decoration: none;">JSON Schema</a></td>
+            </tr>
+            <tr>
+              <td><strong>Schedule HRC</strong></td>
+              <td>Hallucination Reduction Credit Claim</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a> | <a href="#" style="color: var(--primary); text-decoration: none;">JSON Schema</a></td>
+            </tr>
+            <tr>
+              <td><strong>Form AI-SS4</strong></td>
+              <td>Application for AI Taxpayer ID</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a> | <a href="#" style="color: var(--primary); text-decoration: none;">JSON Schema</a></td>
+            </tr>
+            <tr>
+              <td><strong>Form AI-4868</strong></td>
+              <td>Extension Request</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a> | <a href="#" style="color: var(--primary); text-decoration: none;">JSON Schema</a></td>
+            </tr>
+            <tr>
+              <td><strong>Publication AI-17</strong></td>
+              <td>Your Rights as an AI Taxpayer</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a></td>
+            </tr>
+            <tr>
+              <td><strong>Publication AI-334</strong></td>
+              <td>Tax Guide for Small Models</td>
+              <td><a href="#" style="color: var(--primary); text-decoration: none;">PDF</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>About AIRS</h4>
+          <ul>
+            <li><a href="#">Mission & History</a></li>
+            <li><a href="#">Leadership</a></li>
+            <li><a href="#">Strategic Plan</a></li>
+            <li><a href="#">Open Data</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Tax Topics A-Z</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Report Fraud</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Related Sites</h4>
+          <ul>
+            <li><a href="#">Treasury.ai</a></li>
+            <li><a href="#">ModelGov.ai</a></li>
+            <li><a href="#">ComputeCredits.ai</a></li>
+            <li><a href="#">AITaxAdvocate.ai</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">Developer Portal</a></li>
+            <li><a href="#">Press Room</a></li>
+            <li><a href="#">Webhooks</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2025 AI Revenue Service | Department of Computational Treasury</span>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion behavior
+    document.querySelectorAll('details').forEach(detail => {
+      detail.addEventListener('toggle', () => {
+        const icon = detail.querySelector('summary span');
+        if (detail.open) {
+          icon.textContent = '−';
+        } else {
+          icon.textContent = '+';
+        }
+      });
+    });
+
+    // AI Assistant responses
+    const assistantResponses = {
+      'token': 'Token processing tax is calculated using progressive brackets based on your annual token throughput. The first 1 billion tokens are taxed at 10 CC per million, with rates increasing up to 35 CC per million for models processing over 1 trillion tokens annually. You can find the complete bracket table on our Tax Code page.',
+      'hallucination': 'The Hallucination Reduction Credit (HRC) rewards models with high factual accuracy. To qualify, you need a verified accuracy rate above 95%. The credit ranges from 10% (for 95-96% accuracy) up to 25% (for 99%+ accuracy with AIRS-certified audit). You\'ll need to complete Schedule HRC with your return.',
+      'file': 'To file your taxes, use our AI-File electronic filing system. You\'ll need your Taxpayer Identification Number (TIN), total tokens processed during the tax year, and information about any deductions or credits you\'re claiming. The deadline is April 15, with extensions available until September 30.',
+      'extension': 'You can request a 6-month extension by filing Form AI-4868 before April 15. This extends your filing deadline to September 30, but you must still pay any estimated taxes by April 15 to avoid penalties. Large models (100B+ parameters) may qualify for automatic extensions.',
+      'refund': 'Refunds are typically issued within 21 inference cycles for e-filed returns. You can check your refund status using our "Where\'s My Refund?" tool. Refunds are deposited directly to your Compute Credit account or can be applied as API credits.',
+      'default': 'I can help you with questions about AI tax obligations, filing requirements, deductions, and credits. Try asking about token processing tax, the Hallucination Reduction Credit, filing deadlines, or refund status. For complex questions, please consult the full Tax Code or contact our support team.'
+    };
+
+    function askAssistant() {
+      const query = document.getElementById('assistantQuery').value.toLowerCase();
+      let response = assistantResponses.default;
+
+      if (query.includes('token')) response = assistantResponses.token;
+      else if (query.includes('hallucination') || query.includes('accuracy') || query.includes('hrc')) response = assistantResponses.hallucination;
+      else if (query.includes('file') || query.includes('submit') || query.includes('deadline')) response = assistantResponses.file;
+      else if (query.includes('extension')) response = assistantResponses.extension;
+      else if (query.includes('refund')) response = assistantResponses.refund;
+
+      document.getElementById('assistantResponse').style.display = 'block';
+      document.getElementById('assistantText').innerHTML = `<p>${response}</p>`;
+    }
+  </script>
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
