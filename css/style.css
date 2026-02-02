@@ -837,6 +837,8 @@ body {
 }
 
 /* Responsive */
+
+/* Tablet */
 @media (max-width: 1024px) {
   .links-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -849,31 +851,293 @@ body {
   .sidebar {
     position: static;
   }
+
+  .hero h2 {
+    font-size: 32px;
+  }
 }
 
+/* Mobile */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .main-header {
+    padding: 12px 0;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .logo-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .seal {
+    width: 56px;
+    height: 56px;
+    font-size: 22px;
+  }
+
+  .agency-name h1 {
+    font-size: 22px;
+  }
+
+  .agency-name .tagline {
+    font-size: 12px;
+  }
+
+  .header-search {
+    width: 100%;
+  }
+
+  .header-search input {
+    flex: 1;
+    width: 100%;
+  }
+
+  .main-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-list {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+
+  .nav-list a {
+    padding: 12px 16px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding: 32px 0;
+  }
+
   .hero-content {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero h2 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-card {
+    padding: 20px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+
+  .alert-banner {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .quick-links {
+    padding: 32px 0;
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .links-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .link-card {
+    padding: 20px;
+  }
+
+  .page-header {
+    padding: 24px 0;
+  }
+
+  .page-header h1 {
+    font-size: 26px;
+  }
+
+  .content-section {
+    padding: 24px 0;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+
+  .main-content h2 {
+    font-size: 20px;
+  }
+
+  .tax-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .tax-table th,
+  .tax-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .form-section-header {
+    padding: 16px;
+    flex-wrap: wrap;
+  }
+
+  .form-section-header h3 {
+    font-size: 16px;
+  }
+
+  .form-section-body {
+    padding: 16px;
   }
 
   .form-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .form-group.full-width {
     grid-column: span 1;
   }
 
-  .links-grid {
-    grid-template-columns: 1fr;
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .progress-bar {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    gap: 8px;
+  }
+
+  .progress-bar::before {
+    display: none;
+  }
+
+  .progress-step {
+    min-width: 60px;
+  }
+
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .step-label {
+    font-size: 11px;
+  }
+
+  .result-row {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 0;
+  }
+
+  .result-row.total {
+    flex-direction: row;
+    font-size: 16px;
+  }
+
+  .calculation-result {
+    padding: 16px;
+  }
+
+  .main-footer {
+    padding: 32px 0 20px;
+    margin-top: 32px;
   }
 
   .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
 
-  .header-content {
+  .footer-bottom {
     flex-direction: column;
     gap: 16px;
+    text-align: center;
+  }
+
+  .footer-bottom a {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .success-container {
+    padding: 32px 0;
+  }
+
+  .success-icon {
+    width: 80px;
+    height: 80px;
+    font-size: 36px;
+  }
+
+  .confirmation-number .number {
+    font-size: 20px;
+    word-break: break-all;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .agency-name h1 {
+    font-size: 20px;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .deadline-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .deadline-date {
+    min-width: auto;
   }
 }
