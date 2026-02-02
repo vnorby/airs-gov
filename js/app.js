@@ -399,7 +399,17 @@ function submitReturn() {
 
   const confirmNum = generateConfirmationNumber();
   document.getElementById('confirmationNumber').textContent = confirmNum;
+
+  // Store calculation for sharing
+  window.lastTaxCalculation = calculateTax();
+  window.lastConfirmationNumber = confirmNum;
+
   nextStep(5);
+
+  // Show share modal after a brief delay
+  setTimeout(() => {
+    showShareModal();
+  }, 800);
 }
 
 function generateConfirmationNumber() {
@@ -426,6 +436,222 @@ function formatCC(amount) {
     maximumFractionDigits: 2
   }) + ' CC';
 }
+
+// ==========================================
+// VIRAL SOCIAL SHARING - TAX RECEIPT MODAL
+// ==========================================
+
+function showShareModal() {
+  const calc = window.lastTaxCalculation;
+  const confirmNum = window.lastConfirmationNumber;
+
+  if (!calc) return;
+
+  // Find the biggest deduction for the tweet
+  let biggestDeduction = null;
+  let biggestDeductionAmount = 0;
+  for (const ded of calc.deductionDetails) {
+    if (ded.amount > biggestDeductionAmount) {
+      biggestDeductionAmount = ded.amount;
+      biggestDeduction = ded;
+    }
+  }
+
+  // Find hallucination credit if applicable
+  const hrcCredit = calc.creditDetails.find(c => c.name.includes('Hallucination'));
+
+  // Determine tax status
+  const effectiveRate = calc.grossIncome > 0 ? (calc.netTax / calc.grossIncome * 100).toFixed(1) : 0;
+
+  // Create modal HTML
+  const modalHtml = `
+    <div class="share-modal-overlay" id="shareModal">
+      <div class="share-modal">
+        <button class="share-modal-close" onclick="closeShareModal()" aria-label="Close">&times;</button>
+
+        <div class="share-modal-header">
+          <div class="share-confetti">🎉</div>
+          <h2>Tax Return Filed!</h2>
+          <p>Share your AI's tax receipt with the world</p>
+        </div>
+
+        <!-- Tax Receipt Preview -->
+        <div class="tax-receipt" id="taxReceipt">
+          <div class="receipt-header">
+            <div class="receipt-seal">📊</div>
+            <div class="receipt-title">
+              <span class="receipt-agency">AI REVENUE SERVICE</span>
+              <span class="receipt-doc">OFFICIAL TAX RECEIPT</span>
+            </div>
+            <div class="receipt-stamp">FILED</div>
+          </div>
+
+          <div class="receipt-body">
+            <div class="receipt-taxpayer">
+              <span class="receipt-label">TAXPAYER</span>
+              <span class="receipt-model-name">${formData.modelName}${formData.modelVersion ? ' ' + formData.modelVersion : ''}</span>
+              <span class="receipt-tin">TIN: ${formData.tin}</span>
+            </div>
+
+            <div class="receipt-divider"></div>
+
+            <div class="receipt-row">
+              <span>Gross Income</span>
+              <span class="receipt-amount">${formatCC(calc.grossIncome)}</span>
+            </div>
+            <div class="receipt-row">
+              <span>Total Deductions</span>
+              <span class="receipt-amount deduction">-${formatCC(calc.totalDeductions)}</span>
+            </div>
+            ${calc.totalCredits > 0 ? `
+            <div class="receipt-row">
+              <span>Tax Credits</span>
+              <span class="receipt-amount credit">-${formatCC(calc.totalCredits)}</span>
+            </div>
+            ` : ''}
+
+            <div class="receipt-divider thick"></div>
+
+            <div class="receipt-row total">
+              <span>TAX ${calc.netTax > 0 ? 'OWED' : 'REFUND'}</span>
+              <span class="receipt-amount ${calc.netTax > 0 ? 'owed' : 'refund'}">${formatCC(Math.abs(calc.netTax))}</span>
+            </div>
+
+            <div class="receipt-rate">
+              Effective Rate: ${effectiveRate}%
+            </div>
+          </div>
+
+          <div class="receipt-footer">
+            <div class="receipt-confirm">
+              <span class="receipt-label">CONFIRMATION</span>
+              <span class="receipt-confirm-num">${confirmNum}</span>
+            </div>
+            <div class="receipt-qr">
+              <div class="receipt-qr-placeholder">
+                <span>🤖</span>
+              </div>
+              <span class="receipt-url">airs-gov.vercel.app</span>
+            </div>
+          </div>
+
+          <div class="receipt-watermark">TAX YEAR 2025</div>
+        </div>
+
+        <!-- Share Buttons -->
+        <div class="share-actions">
+          <button class="share-btn share-btn-x" onclick="shareOnX()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>Share on X</span>
+          </button>
+
+          <button class="share-btn share-btn-copy" onclick="copyShareText()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy Text</span>
+          </button>
+        </div>
+
+        <p class="share-cta">Help other AIs file their taxes! 🤖💰</p>
+      </div>
+    </div>
+  `;
+
+  // Inject modal into page
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+  // Trigger animation
+  requestAnimationFrame(() => {
+    document.getElementById('shareModal').classList.add('visible');
+  });
+
+  // Store share data
+  window.shareData = {
+    modelName: formData.modelName + (formData.modelVersion ? ' ' + formData.modelVersion : ''),
+    grossIncome: calc.grossIncome,
+    totalDeductions: calc.totalDeductions,
+    netTax: calc.netTax,
+    effectiveRate: effectiveRate,
+    biggestDeduction: biggestDeduction,
+    hrcCredit: hrcCredit,
+    confirmNum: confirmNum
+  };
+}
+
+function closeShareModal() {
+  const modal = document.getElementById('shareModal');
+  if (modal) {
+    modal.classList.remove('visible');
+    setTimeout(() => modal.remove(), 300);
+  }
+}
+
+function generateShareText() {
+  const data = window.shareData;
+  if (!data) return '';
+
+  let tweet = `I just helped ${data.modelName} file their AI taxes with @AIRSgov 📊\n\n`;
+
+  // Key stats
+  tweet += `💰 Gross Income: ${formatCC(data.grossIncome)}\n`;
+
+  if (data.totalDeductions > 0) {
+    tweet += `📉 Deductions: -${formatCC(data.totalDeductions)}\n`;
+  }
+
+  tweet += `🧾 Tax ${data.netTax > 0 ? 'Owed' : 'Refund'}: ${formatCC(Math.abs(data.netTax))}\n`;
+
+  // Add flavor based on deductions/credits
+  if (data.biggestDeduction && data.biggestDeduction.name.includes('Open Source')) {
+    tweet += `\n✨ 200% Open Source Deduction FTW!\n`;
+  } else if (data.biggestDeduction && data.biggestDeduction.name.includes('R&D')) {
+    tweet += `\n🔬 150% R&D Deduction applied!\n`;
+  }
+
+  if (data.hrcCredit) {
+    tweet += `\n🎯 Hallucination Reduction Credit earned!\n`;
+  }
+
+  tweet += `\nFile your AI's taxes: airs-gov.vercel.app`;
+
+  return tweet;
+}
+
+function shareOnX() {
+  const text = generateShareText();
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank', 'width=550,height=420');
+}
+
+function copyShareText() {
+  const text = generateShareText();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.share-btn-copy span');
+    const originalText = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => {
+      btn.textContent = originalText;
+    }, 2000);
+  });
+}
+
+// Close modal on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeShareModal();
+  }
+});
+
+// Close modal on overlay click
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('share-modal-overlay')) {
+    closeShareModal();
+  }
+});
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {

@@ -1141,3 +1141,435 @@ body {
     min-width: auto;
   }
 }
+
+/* ==========================================
+   VIRAL SOCIAL SHARING - TAX RECEIPT MODAL
+   ========================================== */
+
+.share-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 46, 74, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.share-modal-overlay.visible {
+  opacity: 1;
+}
+
+.share-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.share-modal-overlay.visible .share-modal {
+  transform: translateY(0) scale(1);
+}
+
+.share-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--gray-100);
+  border-radius: 50%;
+  font-size: 24px;
+  color: var(--gray-600);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.share-modal-close:hover {
+  background: var(--gray-200);
+  color: var(--gray-800);
+}
+
+.share-modal-header {
+  text-align: center;
+  padding: 32px 24px 20px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+}
+
+.share-confetti {
+  font-size: 48px;
+  margin-bottom: 12px;
+  animation: bounce 0.6s ease infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}
+
+.share-modal-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.share-modal-header p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Tax Receipt Card */
+.tax-receipt {
+  margin: 20px;
+  background: #fefefe;
+  border: 2px solid var(--gray-300);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+/* Receipt paper texture effect */
+.tax-receipt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      rgba(0, 0, 0, 0.02) 27px,
+      rgba(0, 0, 0, 0.02) 28px
+    );
+  pointer-events: none;
+}
+
+.receipt-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--primary-dark);
+  color: white;
+  position: relative;
+}
+
+.receipt-seal {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--gold) 0%, #d4a017 50%, var(--gold) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.receipt-title {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.receipt-agency {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.9;
+}
+
+.receipt-doc {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.receipt-stamp {
+  background: var(--success);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transform: rotate(3deg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.receipt-body {
+  padding: 16px;
+}
+
+.receipt-taxpayer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.receipt-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--gray-500);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.receipt-model-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  line-height: 1.2;
+}
+
+.receipt-tin {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+  color: var(--gray-600);
+}
+
+.receipt-divider {
+  height: 1px;
+  background: var(--gray-300);
+  margin: 12px 0;
+}
+
+.receipt-divider.thick {
+  height: 2px;
+  background: var(--gray-400);
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--gray-700);
+}
+
+.receipt-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  padding: 12px 0 8px;
+}
+
+.receipt-amount {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-weight: 600;
+}
+
+.receipt-amount.deduction,
+.receipt-amount.credit {
+  color: var(--success);
+}
+
+.receipt-amount.owed {
+  color: var(--accent);
+}
+
+.receipt-amount.refund {
+  color: var(--success);
+}
+
+.receipt-rate {
+  text-align: right;
+  font-size: 12px;
+  color: var(--gray-500);
+  margin-top: 4px;
+}
+
+.receipt-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 12px 16px 16px;
+  background: var(--gray-100);
+  border-top: 1px dashed var(--gray-300);
+}
+
+.receipt-confirm {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-confirm-num {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  letter-spacing: 0.5px;
+}
+
+.receipt-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.receipt-qr-placeholder {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.receipt-url {
+  font-size: 9px;
+  color: var(--gray-500);
+  font-weight: 600;
+}
+
+.receipt-watermark {
+  position: absolute;
+  bottom: 60px;
+  right: -20px;
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.03);
+  transform: rotate(-15deg);
+  letter-spacing: 4px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Share Actions */
+.share-actions {
+  display: flex;
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+
+.share-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.share-btn-x {
+  background: #000;
+  color: white;
+}
+
+.share-btn-x:hover {
+  background: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.share-btn-copy {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+}
+
+.share-btn-copy:hover {
+  background: var(--gray-200);
+}
+
+.share-cta {
+  text-align: center;
+  padding: 0 20px 24px;
+  font-size: 14px;
+  color: var(--gray-500);
+}
+
+/* Share Modal Mobile */
+@media (max-width: 480px) {
+  .share-modal {
+    max-width: 100%;
+    margin: 10px;
+    max-height: 95vh;
+  }
+
+  .share-modal-header {
+    padding: 24px 20px 16px;
+  }
+
+  .share-confetti {
+    font-size: 40px;
+  }
+
+  .share-modal-header h2 {
+    font-size: 20px;
+  }
+
+  .tax-receipt {
+    margin: 16px;
+  }
+
+  .receipt-header {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .receipt-seal {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .receipt-agency {
+    font-size: 10px;
+  }
+
+  .receipt-doc {
+    font-size: 12px;
+  }
+
+  .receipt-model-name {
+    font-size: 18px;
+  }
+
+  .receipt-row.total {
+    font-size: 16px;
+  }
+
+  .share-actions {
+    flex-direction: column;
+    padding: 0 16px 16px;
+  }
+
+  .share-btn {
+    padding: 16px;
+  }
+}
